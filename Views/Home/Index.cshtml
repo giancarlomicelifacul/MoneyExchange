@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Currency Converter";
+    var result = ViewBag.Result as Cambio.Service.ExchangeResultDto;
+}
+
+<h1 class="mb-4">Currency Converter</h1>
+
+<form asp-action="Convert" method="post" class="card p-4 shadow-sm">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label for="fromCurrency" class="form-label">From Currency</label>
+            <input type="text" class="form-control" id="fromCurrency" name="fromCurrency" placeholder="e.g. USD" required />
+        </div>
+        <div class="col-md-3">
+            <label for="toCurrency" class="form-label">To Currency</label>
+            <input type="text" class="form-control" id="toCurrency" name="toCurrency" placeholder="e.g. BRL" required />
+        </div>
+        <div class="col-md-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" class="form-control" id="amount" name="amount" placeholder="100" required />
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Convert</button>
+        </div>
+    </div>
+</form>
+
+@if (result != null)
+{
+    <div class="alert alert-success mt-4">
+        <h5>Conversion Result</h5>
+        <p>
+            @result.Amount @result.FromCurrency =
+            <strong>@result.ConvertedAmount @result.ToCurrency</strong>
+        </p>
+    </div>
+}
+
+<div class="mt-4">
+    <a class="btn btn-outline-secondary" href="/Home/History">View History</a>
+</div>
