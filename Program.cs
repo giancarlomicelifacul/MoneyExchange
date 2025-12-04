@@ -11,6 +11,7 @@ DatabaseConfig.Initialize();
 builder.Services.AddSingleton<ExchangeHistoryRepository>();
 builder.Services.AddHttpClient<ExchangeRateService>();
 builder.Services.AddTransient<ExchangeRateService>();
+builder.Services.AddTransient<CsvExportService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
